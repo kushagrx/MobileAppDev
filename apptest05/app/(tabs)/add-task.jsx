@@ -28,42 +28,54 @@ export default function AddTaskScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Add a Task</Text>
+  <View style={styles.container}>
+    <Text style={styles.heading}>Add a Task</Text>
 
-      <TextInput
-        placeholder="Title"
-        style={styles.input}
-        value={title}
-        onChangeText={setTitle}
-        placeholderTextColor="#999"
-      />
+    <TextInput
+      placeholder="Title"
+      style={styles.input}
+      value={title}
+      onChangeText={setTitle}
+      placeholderTextColor="#999"
+    />
 
-      <TextInput
-        placeholder="Description"
-        style={[styles.input, { height: 60 }]}
-        value={description}
-        onChangeText={setDescription}
-        placeholderTextColor="#999"
-        multiline
-      />
+    <TextInput
+      placeholder="Description"
+      style={[styles.input, { height: 60 }]}
+      value={description}
+      onChangeText={setDescription}
+      placeholderTextColor="#999"
+      multiline
+    />
 
-      <Text style={styles.label}>Context</Text>
-      <View style={styles.contextRow}>
-        <TouchableOpacity onPress={() => setContext('@home')} style={[styles.contextBtn, context === '@home' && styles.selected]}>
-          <Text style={styles.contextText}>@home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setContext('@computer')} style={[styles.contextBtn, context === '@computer' && styles.selected]}>
-          <Text style={styles.contextText}>@computer</Text>
-        </TouchableOpacity>
-      </View>
+    <Text style={styles.label}>Context</Text>
+    <View style={styles.contextRow}>
+      <TouchableOpacity
+        onPress={() => setContext('@home')}
+        style={[styles.contextBtn, context === '@home' && styles.selected]}
+      >
+        <Text style={[styles.contextText, context === '@home' && styles.selectedText]}>
+          @home
+        </Text>
+      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
-        <Text style={styles.submitText}>Create Task</Text>
+      <TouchableOpacity
+        onPress={() => setContext('@computer')}
+        style={[styles.contextBtn, context === '@computer' && styles.selected]}>
+        <Text style={[styles.contextText, context === '@computer' && styles.selectedText]}>
+          @computer
+        </Text>
       </TouchableOpacity>
     </View>
-  );
+
+    <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
+      <Text style={styles.submitText}>Create Task</Text>
+    </TouchableOpacity>
+
+  </View>
+);
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#3a0ca3', padding: 20 },
@@ -86,6 +98,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   selected: { backgroundColor: '#fff' },
+  selectedText: {
+  color: '#3a0ca3',
+},
   contextText: { color: '#fff' },
   submitBtn: {
     backgroundColor: '#fff',
