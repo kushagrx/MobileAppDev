@@ -1,0 +1,80 @@
+import React from 'react';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+const router = useRouter();
+
+export default function InboxScreen() {
+  return (
+    <LinearGradient
+      colors={['#1a0033', '#4b0082']} // Deep purple gradient
+      style={styles.container}
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <Text style={styles.greeting}>Hello, Kushagra</Text>
+        <Text style={styles.heading}>Inbox</Text>
+        <Text style={styles.subtext}>Your mind is clear! Your task updates will appear here!</Text>
+
+        <View style={styles.center}>
+          <Text style={styles.emptyText}>Inbox is empty!</Text>
+          <Text style={styles.helperText}>Add a task to get started</Text>
+
+          <TouchableOpacity style={styles.iconButton} onPress={() => router.push('/add-task')}>
+            <MaterialIcons name="add" size={32} color="#fff" />
+          </TouchableOpacity>
+
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+    padding: 24,
+  },
+  greeting: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 10,
+  },
+  heading: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 6,
+  },
+  subtext: {
+    fontSize: 14,
+    color: '#ccc',
+    marginBottom: 40,
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 100,
+  },
+  emptyText: {
+    fontSize: 20,
+    color: '#fff',
+    marginBottom: 8,
+    fontWeight: '600',
+  },
+  helperText: {
+    color: '#bbb',
+    fontSize: 14,
+    marginBottom: 20,
+  },
+  iconButton: {
+    backgroundColor: '#5a00cc',
+    padding: 16,
+    borderRadius: 50,
+    elevation: 5,
+  },
+});
