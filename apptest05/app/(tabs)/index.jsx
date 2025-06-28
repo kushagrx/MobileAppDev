@@ -47,16 +47,18 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    padding: 24,
+    marginLeft:10
   },
   greeting: {
-    color: '#fff',
-    fontSize: 16,
+    fontFamily: 'Satoshi-Bold',
+    color: 'white',
+    fontSize: 25,
     fontWeight: '500',
-    marginBottom: 10,
+    marginBottom: 40,
+    marginTop:25,
   },
   heading: {
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 6,
@@ -84,8 +86,7 @@ const styles = StyleSheet.create({
   },
   iconButton: {
     backgroundColor: '#5a00cc',
-    padding: 16,
-    borderRadius: 50,
-    elevation: 5,
+    padding: 13,
+    borderRadius: 60,
   },
 });
