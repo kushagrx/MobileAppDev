@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useTasks } from '../context/TaskContext';
 
 export default function AddTaskScreen() {
@@ -13,30 +14,30 @@ export default function AddTaskScreen() {
   const [type, setType] = useState('inbox');
 
   const handleCreate = () => {
-    if (!title) return; // skip if no title
-    addTask(title, desc, context, '', type);
+    if (!title.trim()) {
+      Alert.alert('Missing Title', 'Please enter a task to add it.');
+      return;
+    }
+
+    addTask(title.trim(), desc.trim(), context, '', type);
     router.push('/tabs/index');
   };
 
-  const renderButton = (value, selected, setSelected) => (
+  const renderChip = (label, selected, setSelected) => (
     <TouchableOpacity
-      onPress={() => setSelected(value)}
-      style={[
-        styles.chip,
-        selected === value && styles.selected,
-      ]}
+      key={label}
+      onPress={() => setSelected(label)}
+      style={[styles.chip, selected === label && styles.selected]}
     >
-      <Text style={[
-        styles.chipText,
-        selected === value && styles.selectedText,
-      ]}>
-        {value}
+      <Text style={[styles.chipText, selected === label && styles.selectedText]}>
+        {label}
       </Text>
     </TouchableOpacity>
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+  <LinearGradient colors={['#1a0033', '#4b0082']} style={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Text style={styles.heading}>Add Task</Text>
 
       <TextInput
@@ -52,49 +53,52 @@ export default function AddTaskScreen() {
         placeholderTextColor="#aaa"
         value={desc}
         onChangeText={setDesc}
-        style={[styles.input, { height: 60 }]}
+        style={[styles.input, { height: 80 }]}
         multiline
       />
 
       <Text style={styles.label}>Context</Text>
       <View style={styles.row}>
-        {['@home', '@computer', '@errands'].map(c =>
-          renderButton(c, context, setContext)
+        {['@home', '@college', '@errands', '@work'].map(item =>
+          renderChip(item, context, setContext)
         )}
       </View>
 
       <Text style={styles.label}>Type</Text>
       <View style={styles.row}>
-        {['inbox', 'next', 'project'].map(t =>
-          renderButton(t, type, setType)
+        {['inbox', 'next', 'project'].map(item =>
+          renderChip(item, type, setType)
         )}
       </View>
 
       <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
         <Text style={styles.submitText}>Create Task</Text>
       </TouchableOpacity>
-      
     </ScrollView>
-  );
+  </LinearGradient>
+);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#3a0ca3',
-    padding: 20,
+  scrollContainer: {
     flexGrow: 1,
+    padding: 20,
+    paddingBottom: 40,
+    marginTop: 30,
+    
   },
   heading: {
-    fontSize: 24,
+    fontSize: 26,
     color: '#fff',
     fontWeight: 'bold',
     marginBottom: 20,
+    fontFamily:'Satoshi-Bold'
   },
   input: {
     backgroundColor: '#1e1e1e',
     color: '#fff',
-    borderRadius: 8,
-    padding: 12,
+    borderRadius: 10,
+    padding: 14,
     marginBottom: 16,
   },
   label: {
@@ -102,11 +106,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
     marginTop: 10,
+    fontFamily:'Satoshi-Bold'
   },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 16,
+    
   },
   chip: {
     borderWidth: 1,
@@ -116,6 +122,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     marginRight: 10,
     marginBottom: 10,
+    
   },
   chipText: {
     color: '#fff',
@@ -130,14 +137,14 @@ const styles = StyleSheet.create({
   },
   submitBtn: {
     backgroundColor: '#fff',
-    padding: 14,
-    borderRadius: 8,
+    padding: 16,
+    borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
   },
   submitText: {
     color: '#3a0ca3',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily:'Satoshi-Bold'
   },
 });

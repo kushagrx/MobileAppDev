@@ -18,7 +18,7 @@ export default function InboxScreen() {
       <SafeAreaView style={styles.safeArea}>
         <Text style={styles.greeting}>Hello, Kushagra</Text>
         <Text style={styles.heading}>Inbox</Text>
-        <Text style={styles.subtext}>Your mind is clear! Your task updates will appear here!</Text>
+        <Text style={styles.subtext}>Hmm, It seems like your mind is clear. Your task updates will appear here!</Text>
 
         {inboxTasks.length === 0 ? (
           <View style={styles.center}>
@@ -47,18 +47,19 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    marginLeft:10
+    marginLeft:12,
   },
   greeting: {
     fontFamily: 'Satoshi-Bold',
     color: 'white',
     fontSize: 25,
     fontWeight: '500',
-    marginBottom: 40,
+    marginBottom: 38,
     marginTop:25,
   },
   heading: {
     fontSize: 40,
+    fontFamily: 'Satoshi-Bold',
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 6,
@@ -67,6 +68,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#ccc',
     marginBottom: 40,
+    fontFamily: 'Satoshi-Bold',
+    maxWidth:375
   },
   center: {
     alignItems: 'center',
