@@ -1,116 +1,143 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useTasks } from '../context/TaskContext';
 
 export default function AddTaskScreen() {
+  const { addTask } = useTasks();
+  const router = useRouter();
+
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [desc, setDesc] = useState('');
   const [context, setContext] = useState('');
+  const [type, setType] = useState('inbox');
 
   const handleCreate = () => {
-    if (title === '') {
-      Alert.alert('Please enter a title');
-      return;
-    }
-
-    const task = {
-      title,
-      description,
-      context,
-      status: 'inbox',
-    };
-
-    console.log('Task created:', task);
-    Alert.alert('Task added!');
-
-    setTitle('');
-    setDescription('');
-    setContext('');
+    if (!title) return; // skip if no title
+    addTask(title, desc, context, '', type);
+    router.push('/tabs/index');
   };
 
-  return (
-  <View style={styles.container}>
-    <Text style={styles.heading}>Add a Task</Text>
-
-    <TextInput
-      placeholder="Title"
-      style={styles.input}
-      value={title}
-      onChangeText={setTitle}
-      placeholderTextColor="#999"
-    />
-
-    <TextInput
-      placeholder="Description"
-      style={[styles.input, { height: 60 }]}
-      value={description}
-      onChangeText={setDescription}
-      placeholderTextColor="#999"
-      multiline
-    />
-
-    <Text style={styles.label}>Context</Text>
-    <View style={styles.contextRow}>
-      <TouchableOpacity
-        onPress={() => setContext('@home')}
-        style={[styles.contextBtn, context === '@home' && styles.selected]}
-      >
-        <Text style={[styles.contextText, context === '@home' && styles.selectedText]}>
-          @home
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => setContext('@computer')}
-        style={[styles.contextBtn, context === '@computer' && styles.selected]}>
-        <Text style={[styles.contextText, context === '@computer' && styles.selectedText]}>
-          @computer
-        </Text>
-      </TouchableOpacity>
-    </View>
-
-    <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
-      <Text style={styles.submitText}>Create Task</Text>
+  const renderButton = (value, selected, setSelected) => (
+    <TouchableOpacity
+      onPress={() => setSelected(value)}
+      style={[
+        styles.chip,
+        selected === value && styles.selected,
+      ]}
+    >
+      <Text style={[
+        styles.chipText,
+        selected === value && styles.selectedText,
+      ]}>
+        {value}
+      </Text>
     </TouchableOpacity>
+  );
 
-  </View>
-);
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.heading}>Add Task</Text>
+
+      <TextInput
+        placeholder="Title"
+        placeholderTextColor="#aaa"
+        value={title}
+        onChangeText={setTitle}
+        style={styles.input}
+      />
+
+      <TextInput
+        placeholder="Description"
+        placeholderTextColor="#aaa"
+        value={desc}
+        onChangeText={setDesc}
+        style={[styles.input, { height: 60 }]}
+        multiline
+      />
+
+      <Text style={styles.label}>Context</Text>
+      <View style={styles.row}>
+        {['@home', '@computer', '@errands'].map(c =>
+          renderButton(c, context, setContext)
+        )}
+      </View>
+
+      <Text style={styles.label}>Type</Text>
+      <View style={styles.row}>
+        {['inbox', 'next', 'project'].map(t =>
+          renderButton(t, type, setType)
+        )}
+      </View>
+
+      <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
+        <Text style={styles.submitText}>Create Task</Text>
+      </TouchableOpacity>
+      
+    </ScrollView>
+  );
 }
 
-
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#3a0ca3', padding: 20 },
-  heading: { fontSize: 24, color: '#fff', fontWeight: 'bold', marginBottom: 20 },
+  container: {
+    backgroundColor: '#3a0ca3',
+    padding: 20,
+    flexGrow: 1,
+  },
+  heading: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
   input: {
     backgroundColor: '#1e1e1e',
     color: '#fff',
-    padding: 12,
     borderRadius: 8,
+    padding: 12,
     marginBottom: 16,
   },
-  label: { color: '#fff', fontSize: 16, marginBottom: 8 },
-  contextRow: { flexDirection: 'row', marginBottom: 20 },
-  contextBtn: {
+  label: {
+    color: '#fff',
+    fontSize: 16,
+    marginBottom: 8,
+    marginTop: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 16,
+  },
+  chip: {
     borderWidth: 1,
     borderColor: '#fff',
     borderRadius: 20,
     paddingVertical: 6,
     paddingHorizontal: 14,
     marginRight: 10,
+    marginBottom: 10,
   },
-  selected: { backgroundColor: '#fff' },
+  chipText: {
+    color: '#fff',
+    fontSize: 14,
+  },
+  selected: {
+    backgroundColor: '#fff',
+  },
   selectedText: {
-  color: '#3a0ca3',
-},
-  contextText: { color: '#fff' },
+    color: '#3a0ca3',
+    fontWeight: 'bold',
+  },
   submitBtn: {
     backgroundColor: '#fff',
     padding: 14,
     borderRadius: 8,
     alignItems: 'center',
+    marginTop: 20,
   },
   submitText: {
     color: '#3a0ca3',
-    fontWeight: 'bold',
     fontSize: 16,
+    fontWeight: 'bold',
   },
 });
