@@ -1,6 +1,7 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useTasks } from '../context/TaskContext';
 import TaskCard from '../components/TaskCard';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function NextActionsScreen() {
   const { tasks, toggleTaskCompletion } = useTasks();
@@ -8,6 +9,7 @@ export default function NextActionsScreen() {
   const nextTasks = tasks.filter(task => task.type === 'next');
 
   return (
+    <LinearGradient colors={['#1a0033', '#4b0082']} style={{ flex: 1 }}>
     <View style={styles.container}>
       <Text style={styles.heading}>Next Actions</Text>
       {nextTasks.length === 0 ? (
@@ -22,6 +24,7 @@ export default function NextActionsScreen() {
         />
       )}
     </View>
+    </LinearGradient>
   );
 }
 

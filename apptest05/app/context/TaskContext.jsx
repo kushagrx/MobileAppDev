@@ -12,25 +12,27 @@ export function TaskProvider({ children }) {
       desc,
       context,
       project,
-      type, // inbox | next | project
+      type,
       completed: false,
     };
     setTasks([...tasks, newTask]);
   };
 
-  const markTaskComplete = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, completed: true } : task
-      )
-    );
-  };
+  const toggleTaskComplete = (id) => {
+  setTasks(prev =>
+    prev.map(task =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    )
+  );
+};
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, markTaskComplete }}>
-      {children}
-    </TaskContext.Provider>
-  );
+  <TaskContext.Provider value={{ tasks, addTask, toggleTaskComplete }}>
+    {children}
+  </TaskContext.Provider>
+);
+
+
 }
 
 export const useTasks = () => useContext(TaskContext);

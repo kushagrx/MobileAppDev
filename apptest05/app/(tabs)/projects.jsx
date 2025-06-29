@@ -5,7 +5,16 @@ import TaskCard from '../components/TaskCard';
 export default function ProjectsScreen() {
   const { tasks, toggleTaskCompletion } = useTasks();
 
+  <FlatList
+  data={tasks.filter(t => t.type === 'next')} // or 'inbox'/'project'
+  renderItem={({ item }) => (
+    <TaskCard task={item} onToggleComplete={toggleTaskCompletion} />
+  )}
+/>
+
   const projectTasks = tasks.filter(task => task.type === 'project');
+
+  
 
   return (
     <View style={styles.container}>

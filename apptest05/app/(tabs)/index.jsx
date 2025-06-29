@@ -7,10 +7,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 export default function InboxScreen() {
-  const { tasks } = useTasks();
+  const { tasks, toggleTaskComplete } = useTasks(); // ✅ make sure this is correct
   const router = useRouter();
 
-  // Filter only 'inbox' tasks
   const inboxTasks = tasks.filter((task) => task.type === 'inbox');
 
   return (
@@ -32,7 +31,9 @@ export default function InboxScreen() {
           <FlatList
             data={inboxTasks}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <TaskCard task={item} />}
+            renderItem={({ item }) => (
+              <TaskCard task={item} onToggleComplete={toggleTaskComplete} />
+            )}
             contentContainerStyle={{ paddingBottom: 100 }}
           />
         )}

@@ -20,7 +20,7 @@ export default function AddTaskScreen() {
     }
 
     addTask(title.trim(), desc.trim(), context, '', type);
-    router.push('/tabs/index');
+    router.push('/');
   };
 
   const renderChip = (label, selected, setSelected) => (
