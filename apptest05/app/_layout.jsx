@@ -1,17 +1,10 @@
 import { Stack } from 'expo-router';
-import { TaskProvider } from './context/TaskContext';
-import { useFonts } from 'expo-font';
+import { TaskProvider } from '../context/TaskContext';
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    'Satoshi-Regular': require('../assets/fonts/Satoshi-Regular.otf'),
-    'Satoshi-Bold': require('../assets/fonts/Satoshi-Bold.ttf'),
-  });
-  return(
+  return (
     <TaskProvider>
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{headerShown:false}}/>
-    </Stack>
+      <Stack />
     </TaskProvider>
   );
 }

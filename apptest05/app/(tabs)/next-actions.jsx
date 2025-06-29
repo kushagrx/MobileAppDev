@@ -1,48 +1,18 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { useTasks } from '../context/TaskContext';
+import React from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { useTasks } from '../../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const contexts = ['All', '@home', '@computer', '@errands'];
-
 export default function NextActionsScreen() {
   const { tasks, toggleTaskComplete } = useTasks();
-  const [selectedContext, setSelectedContext] = useState('All');
-
-  const nextTasks = tasks.filter(task =>
-    task.type === 'next' &&
-    (selectedContext === 'All' || task.context === selectedContext)
-  );
+  const nextTasks = tasks.filter((task) => task.type === 'next');
 
   return (
     <LinearGradient colors={['#1a0033', '#4b0082']} style={styles.container}>
       <Text style={styles.heading}>Next Actions</Text>
-
-      <View style={styles.contextRow}>
-        {contexts.map(context => (
-          <TouchableOpacity
-            key={context}
-            onPress={() => setSelectedContext(context)}
-            style={[
-              styles.contextBtn,
-              selectedContext === context && styles.selected,
-            ]}
-          >
-            <Text
-              style={[
-                styles.contextText,
-                selectedContext === context && styles.selectedText,
-              ]}
-            >
-              {context}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
       {nextTasks.length === 0 ? (
-        <Text style={styles.empty}>No tasks found for this context.</Text>
+        <Text style={styles.empty}>No Next Actions yet.</Text>
       ) : (
         <FlatList
           data={nextTasks}
@@ -50,7 +20,7 @@ export default function NextActionsScreen() {
           renderItem={({ item }) => (
             <TaskCard task={item} onToggleComplete={toggleTaskComplete} />
           )}
-          contentContainerStyle={{ paddingBottom: 100 }}
+          contentContainerStyle={{ paddingBottom: 80 }}
         />
       )}
     </LinearGradient>

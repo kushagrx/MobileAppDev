@@ -18,11 +18,11 @@ export default function TaskCard({ task, onToggleComplete }) {
         <Text style={[styles.title, task.completed && styles.strike]}>
           {task.title}
         </Text>
-        {task.description !== '' && (
-          <Text style={[styles.desc, task.completed && styles.strike]}>
-            {task.description}
-          </Text>
-        )}
+        {!!task.description && (
+  <Text style={[styles.desc, task.completed && styles.strike]}>
+    {task.description}
+  </Text>
+)}
         <Text style={styles.meta}>{task.context} · {task.type}</Text>
       </View>
     </TouchableOpacity>

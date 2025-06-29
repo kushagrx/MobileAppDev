@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
-import { useTasks } from '../context/TaskContext';
+import { useTasks } from '../../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     color: '#ccc',
     marginBottom: 40,
     fontFamily: 'Satoshi-Bold',
-    maxWidth:375
+    maxWidth:370
   },
   center: {
     alignItems: 'center',

@@ -2,25 +2,25 @@ import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useTasks } from '../context/TaskContext';
+import { useTasks } from '../../context/TaskContext';
 
 export default function AddTaskScreen() {
   const { addTask } = useTasks();
   const router = useRouter();
 
   const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState('');
+  const [description, setDescription] = useState('');
   const [context, setContext] = useState('');
   const [type, setType] = useState('inbox');
 
   const handleCreate = () => {
     if (!title.trim()) {
-      Alert.alert('Missing Title', 'Please enter a task to add it.');
+      Alert.alert('Missing Title', 'Please enter a task title.');
       return;
     }
 
-    addTask(title.trim(), desc.trim(), context, '', type);
-    router.push('/');
+    addTask(title.trim(), description.trim(), context, '', type);
+    router.push('/'); // Go back to Inbox
   };
 
   const renderChip = (label, selected, setSelected) => (
@@ -36,47 +36,47 @@ export default function AddTaskScreen() {
   );
 
   return (
-  <LinearGradient colors={['#1a0033', '#4b0082']} style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <Text style={styles.heading}>Add Task</Text>
+    <LinearGradient colors={['#1a0033', '#4b0082']} style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.heading}>Add Task</Text>
 
-      <TextInput
-        placeholder="Title"
-        placeholderTextColor="#aaa"
-        value={title}
-        onChangeText={setTitle}
-        style={styles.input}
-      />
+        <TextInput
+          placeholder="Title"
+          placeholderTextColor="#aaa"
+          value={title}
+          onChangeText={setTitle}
+          style={styles.input}
+        />
 
-      <TextInput
-        placeholder="Description"
-        placeholderTextColor="#aaa"
-        value={desc}
-        onChangeText={setDesc}
-        style={[styles.input, { height: 80 }]}
-        multiline
-      />
+        <TextInput
+          placeholder="Description"
+          placeholderTextColor="#aaa"
+          value={description}
+          onChangeText={setDescription}
+          style={[styles.input, { height: 80 }]}
+          multiline
+        />
 
-      <Text style={styles.label}>Context:</Text>
-      <View style={styles.row}>
-        {['@home', '@college', '@errands', '@work'].map(item =>
-          renderChip(item, context, setContext)
-        )}
-      </View>
+        <Text style={styles.label}>Context:</Text>
+        <View style={styles.row}>
+          {['@home', '@college', '@errands', '@work'].map((item) =>
+            renderChip(item, context, setContext)
+          )}
+        </View>
 
-      <Text style={styles.label}>Type: </Text>
-      <View style={styles.row}>
-        {['inbox', 'next', 'project'].map(item =>
-          renderChip(item, type, setType)
-        )}
-      </View>
+        <Text style={styles.label}>Type:</Text>
+        <View style={styles.row}>
+          {['inbox', 'next', 'project'].map((item) =>
+            renderChip(item, type, setType)
+          )}
+        </View>
 
-      <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
-        <Text style={styles.submitText}>Create Task</Text>
-      </TouchableOpacity>
-    </ScrollView>
-  </LinearGradient>
-);
+        <TouchableOpacity style={styles.submitBtn} onPress={handleCreate}>
+          <Text style={styles.submitText}>Create Task</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </LinearGradient>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -85,14 +85,13 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 40,
     marginTop: 30,
-    
   },
   heading: {
     fontSize: 26,
     color: '#fff',
     fontWeight: 'bold',
     marginBottom: 20,
-    fontFamily:'Satoshi-Bold'
+    fontFamily: 'Satoshi-Bold',
   },
   input: {
     backgroundColor: '#1e1e1e',
@@ -106,13 +105,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
     marginTop: 10,
-    fontFamily:'Satoshi-Bold'
+    fontFamily: 'Satoshi-Bold',
   },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 16,
-    
   },
   chip: {
     borderWidth: 1,
@@ -122,7 +120,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     marginRight: 10,
     marginBottom: 10,
-    
   },
   chipText: {
     color: '#fff',
@@ -145,6 +142,6 @@ const styles = StyleSheet.create({
   submitText: {
     color: '#3a0ca3',
     fontSize: 16,
-    fontFamily:'Satoshi-Bold'
+    fontFamily: 'Satoshi-Bold',
   },
 });
