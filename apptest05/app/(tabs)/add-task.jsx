@@ -57,14 +57,14 @@ export default function AddTaskScreen() {
         multiline
       />
 
-      <Text style={styles.label}>Context</Text>
+      <Text style={styles.label}>Context:</Text>
       <View style={styles.row}>
         {['@home', '@college', '@errands', '@work'].map(item =>
           renderChip(item, context, setContext)
         )}
       </View>
 
-      <Text style={styles.label}>Type</Text>
+      <Text style={styles.label}>Type: </Text>
       <View style={styles.row}>
         {['inbox', 'next', 'project'].map(item =>
           renderChip(item, type, setType)
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   submitBtn: {
     backgroundColor: '#fff',
     padding: 16,
-    borderRadius: 10,
+    borderRadius: 15,
     alignItems: 'center',
     marginTop: 20,
   },

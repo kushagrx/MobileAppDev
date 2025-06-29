@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 export default function InboxScreen() {
-  const { tasks, toggleTaskComplete } = useTasks(); // ✅ make sure this is correct
+  const { tasks, toggleTaskComplete } = useTasks(); 
   const router = useRouter();
 
   const inboxTasks = tasks.filter((task) => task.type === 'inbox');
@@ -17,9 +17,10 @@ export default function InboxScreen() {
       <SafeAreaView style={styles.safeArea}>
         <Text style={styles.greeting}>Hello, Kushagra</Text>
         <Text style={styles.heading}>Inbox</Text>
-        <Text style={styles.subtext}>Hmm, It seems like your mind is clear. Your task updates will appear here!</Text>
 
         {inboxTasks.length === 0 ? (
+          <>
+          <Text style={styles.subtext}>Hmm, It seems like your mind is clear. Your task updates will appear here!</Text>
           <View style={styles.center}>
             <Text style={styles.emptyText}>Inbox is empty!</Text>
             <Text style={styles.helperText}>Add a task to get started</Text>
@@ -27,6 +28,7 @@ export default function InboxScreen() {
               <MaterialIcons name="add" size={32} color="#fff" />
             </TouchableOpacity>
           </View>
+          </>
         ) : (
           <FlatList
             data={inboxTasks}

@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     alignItems: 'center',
+    maxWidth:360,
   },
   completedCard: {
     opacity: 0.5,
