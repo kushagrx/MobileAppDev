@@ -4,7 +4,11 @@ import { TaskProvider } from '../context/TaskContext';
 export default function RootLayout() {
   return (
     <TaskProvider>
-      <Stack />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
     </TaskProvider>
   );
 }
