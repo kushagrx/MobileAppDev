@@ -24,7 +24,7 @@ export default function NextActionsScreen() {
           <Text style={styles.heading}>Next Actions</Text>
 
           <View style={styles.contextRow}>
-            {['@home', '@laptop', '@errands'].map((context) => (
+            {['@home', '@college', '@errands', '@work'].map((context) => (
               <TouchableOpacity
                 key={context}
                 onPress={() =>
