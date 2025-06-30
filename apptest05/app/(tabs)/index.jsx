@@ -19,7 +19,7 @@ export default function InboxScreen() {
     <>
     <StatusBar style="light" translucent backgroundColor="transparent" />
     <LinearGradient colors={['#1a0033', '#4b0082']} style={styles.container}>
-      <SafeAreaView edges={['top']} style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea}>
         <Text style={styles.greeting}>Hello, Kushagra</Text>
         <Text style={styles.heading}>Inbox</Text>
 
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    paddingVertical:20,
   },
   greeting: {
     fontFamily: 'Satoshi-Bold',
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 20,
+    fontFamily:'Satoshi-Regular',
     color: '#fff',
     marginBottom: 8,
     fontWeight: '600',

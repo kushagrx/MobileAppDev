@@ -3,71 +3,57 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useTasks } from '../../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 export default function NextActionsScreen() {
   const { tasks, toggleTaskComplete } = useTasks();
   const nextTasks = tasks.filter((task) => task.type === 'next');
 
   return (
-    <LinearGradient colors={['#1a0033', '#4b0082']} style={styles.container}>
-      <Text style={styles.heading}>Next Actions</Text>
-      {nextTasks.length === 0 ? (
-        <Text style={styles.empty}>No Next Actions yet.</Text>
-      ) : (
-        <FlatList
-          data={nextTasks}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <TaskCard task={item} onToggleComplete={toggleTaskComplete} />
+    <>
+      <StatusBar style="light" translucent backgroundColor="transparent" />
+      <LinearGradient colors={['#1a0033', '#4b0082']} style={styles.gradient}>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
+          <Text style={styles.heading}>Next Actions</Text>
+          {nextTasks.length === 0 ? (
+            <Text style={styles.empty}>No Next Actions yet.</Text>
+          ) : (
+            <FlatList
+              data={nextTasks}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <TaskCard task={item} onToggleComplete={toggleTaskComplete} />
+              )}
+              contentContainerStyle={{ paddingBottom: 80 }}
+            />
           )}
-          contentContainerStyle={{ paddingBottom: 80 }}
-        />
-      )}
-    </LinearGradient>
+        </SafeAreaView>
+      </LinearGradient>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gradient: {
     flex: 1,
-    padding: 20,
+  },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 10,
   },
   heading: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 10,
-    fontFamily:'Satoshi-Bold'
-  },
-  contextRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 16,
-  },
-  contextBtn: {
-    borderWidth: 1,
-    borderColor: '#fff',
-    borderRadius: 20,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    marginRight: 10,
-    marginBottom: 10,
-  },
-  contextText: {
-    color: '#fff',
-    fontSize: 14,
-  },
-  selected: {
-    backgroundColor: '#fff',
-  },
-  selectedText: {
-    color: '#3a0ca3',
-    fontWeight: 'bold',
+    marginBottom: 20,
+    fontFamily: 'Satoshi-Bold',
   },
   empty: {
     color: '#aaa',
     fontSize: 16,
+    fontFamily: 'Satoshi-Bold',
     marginTop: 20,
-    fontFamily:'Satoshi-Bold'
   },
 });

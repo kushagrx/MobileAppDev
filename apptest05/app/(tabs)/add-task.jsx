@@ -81,10 +81,10 @@ export default function AddTaskScreen() {
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flexGrow: 1,
-    padding: 20,
-    paddingBottom: 40,
-    marginTop: 30,
+  flex: 1,
+  justifyContent: 'center',
+  paddingHorizontal: 20,
+  paddingBottom: 40,
   },
   heading: {
     fontSize: 26,
