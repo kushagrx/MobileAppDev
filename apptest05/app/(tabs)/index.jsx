@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useTasks } from '../../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-
+import { StatusBar } from 'expo-status-bar';
+import { Platform, StatusBar as RNStatusBar } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function InboxScreen() {
   const { tasks, toggleTaskComplete } = useTasks(); 
@@ -14,8 +16,10 @@ export default function InboxScreen() {
   const inboxTasks = tasks.filter((task) => task.type === 'inbox');
 
   return (
+    <>
+    <StatusBar style="light" translucent backgroundColor="transparent" />
     <LinearGradient colors={['#1a0033', '#4b0082']} style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView edges={['top']} style={styles.safeArea}>
         <Text style={styles.greeting}>Hello, Kushagra</Text>
         <Text style={styles.heading}>Inbox</Text>
 
@@ -42,6 +46,7 @@ export default function InboxScreen() {
         )}
       </SafeAreaView>
     </LinearGradient>
+    </>
   );
 }
 
@@ -51,7 +56,7 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    marginLeft:12,
+    paddingHorizontal: 10,
   },
   greeting: {
     fontFamily: 'Satoshi-Bold',
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '500',
     marginBottom: 38,
-    marginTop:25,
   },
   heading: {
     fontSize: 40,
