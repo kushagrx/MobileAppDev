@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="981a1ded-d5b1-436e-86af-437dfdd64ea3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/apptest05/app/(tabs)/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/apptest05/app/(tabs)/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptest05/app/components/TaskCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/apptest05/app/components/TaskCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app/(tabs)/_layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app/(tabs)/explore.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app/(tabs)/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app/+not-found.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/app/_layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/fonts/SpaceMono-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/adaptive-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/partial-react-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/react-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/react-logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/react-logo@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/assets/images/splash-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/Collapsible.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ExternalLink.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/HapticTab.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/HelloWave.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ParallaxScrollView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ThemedText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ThemedView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ui/IconSymbol.ios.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ui/IconSymbol.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ui/TabBarBackground.ios.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/components/ui/TabBarBackground.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/constants/Colors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/hooks/useColorScheme.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/hooks/useColorScheme.web.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learnrn/hooks/useThemeColor.ts" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="31libw26iSfRSyjwsrue2fE0Oub" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "d0f86443",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/College/ReactNative",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\College\\ReactNative\\apptest05\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="981a1ded-d5b1-436e-86af-437dfdd64ea3" name="Changes" comment="" />
+      <created>1756105135027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756105135027</updated>
+      <workItem from="1756105136653" duration="4476000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
