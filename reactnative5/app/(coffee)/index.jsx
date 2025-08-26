@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable} from 'react-native'
+import { View, Text, StyleSheet, Pressable, TouchableOpacity} from 'react-native'
 import React from 'react'
 import icedcoffee from '@/assets/images/icedcoffee.jpg'
 import { ImageBackground } from 'expo-image'
@@ -12,11 +12,6 @@ export default function app() {
       style={styles.image}
       >
       <Text style={styles.text}>Welcome To My Coffee Shop!</Text>
-      <Link href="/explore" style={{marginHorizontal:'auto'}}>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Explore</Text>
-      </Pressable>
-      </Link>
       </ImageBackground>
 
     </View>

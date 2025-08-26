@@ -1,8 +1,10 @@
+// CONTEXT FOR TASK MANAGEMENT (ADD, TOGGLE COMPLETE)
+
 import React, { createContext, useContext, useState } from 'react';
 
-const TaskContext = createContext();
+const TaskContext = createContext();    // Global bucket for tasks
 
-export const TaskProvider = ({ children }) => {
+export const TaskProvider = ({ children }) => {   //This is wrapping the app with this provider in _layout.jsx
   const [tasks, setTasks] = useState([]);
 
   const addTask = (title, description, context, dueDate, type) => {
@@ -15,8 +17,8 @@ export const TaskProvider = ({ children }) => {
       type,
       completed: false,
     };
-    setTasks((prev) => [...prev, newTask]);
-  };
+    setTasks((prev) => [...prev, newTask]);   // Creates a new array and add new task to existing tasks
+  };  
 
   const toggleTaskComplete = (id) => {
     setTasks((prev) =>
@@ -33,4 +35,4 @@ export const TaskProvider = ({ children }) => {
   );
 };
 
-export const useTasks = () => useContext(TaskContext);
+export const useTasks = () => useContext(TaskContext);    // Custom hook to use the TaskContext throughtout the app

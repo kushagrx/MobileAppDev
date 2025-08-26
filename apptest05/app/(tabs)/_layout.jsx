@@ -1,4 +1,4 @@
-// app/tabs/_layout.jsx
+// MAIN NAVIGATION LAYOUT FOR THE BOTTOM TABS USING EXPO ROUTER
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
@@ -13,7 +13,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarActiveTintColor: '#3a0ca3',
         tabBarStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: 'white',
           height: 75,
         },
         tabBarLabelStyle: {
@@ -38,7 +38,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <AntDesign name="pluscircle" size={26} color={color} />
           ),
-          //tabBarLabel: () => null,
+          // tabBarLabel: () => null,   This hides any title below the icon
         }}
       />
 

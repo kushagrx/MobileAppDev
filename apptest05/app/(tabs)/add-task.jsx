@@ -9,12 +9,12 @@ export default function AddTaskScreen() {
   const router = useRouter();
 
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [context, setContext] = useState('');
-  const [type, setType] = useState('inbox');
+  const [description, setDescription] = useState('');   
+  const [context, setContext] = useState('');   
+  const [type, setType] = useState('inbox');   // Default type is 'inbox'
 
   const handleCreate = () => {
-    if (!title.trim()) {
+    if (!title.trim()) {              // Form validation for title
       Alert.alert('Missing Title', 'Please enter a task title.');
       return;
     }
@@ -23,7 +23,7 @@ export default function AddTaskScreen() {
     router.push('/'); // Go back to Inbox
   };
 
-  const renderChip = (label, selected, setSelected) => (
+  const renderChip = (label, selected, setSelected) => (    //Resuable component for context and type selection
     <TouchableOpacity
       key={label}
       onPress={() => setSelected(label)}

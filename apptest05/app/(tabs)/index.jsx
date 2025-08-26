@@ -13,7 +13,7 @@ export default function InboxScreen() {
   const { tasks, toggleTaskComplete } = useTasks(); 
   const router = useRouter();
 
-  const inboxTasks = tasks.filter((task) => task.type === 'inbox');
+  const inboxTasks = tasks.filter((task) => task.type === 'inbox'); //Filters tasks so only those Inbox show here.
 
   return (
     <>
@@ -49,6 +49,8 @@ export default function InboxScreen() {
     </>
   );
 }
+
+//CSS STYLING
 
 const styles = StyleSheet.create({
   container: {
