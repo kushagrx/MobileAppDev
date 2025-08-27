@@ -25,8 +25,8 @@ export default function AddTaskScreen() {
 
   const renderChip = (label, selected, setSelected) => (    //Resuable component for context and type selection
     <TouchableOpacity
-      key={label}
-      onPress={() => setSelected(label)}
+      key={label}    
+      onPress={() => setSelected(label)}        // Sets the selected context or type
       style={[styles.chip, selected === label && styles.selected]}
     >
       <Text style={[styles.chipText, selected === label && styles.selectedText]}>

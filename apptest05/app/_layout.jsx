@@ -1,3 +1,5 @@
+// Root layout for the app, wrapping all screens with TaskProvider and SafeAreaProvider
+
 import { Stack } from 'expo-router';
 import { TaskProvider } from '../context/TaskContext';
 import { StatusBar } from 'expo-status-bar';
@@ -8,7 +10,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <TaskProvider>
         <StatusBar style="dark"  translucent backgroundColor="transparent" />
-        <Stack
+        <Stack            // Stack navigator to manage screen transitions
           screenOptions={{
             headerShown: false,
           }}

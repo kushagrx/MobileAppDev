@@ -9,7 +9,7 @@ export const TaskProvider = ({ children }) => {   //This is wrapping the app wit
 
   const addTask = (title, description, context, dueDate, type) => {
     const newTask = {
-      id: Date.now().toString(),
+      id: Date.now().toString(),  // Unique ID based on timestamp
       title,
       description,
       context,
