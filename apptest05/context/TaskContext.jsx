@@ -18,7 +18,19 @@ export const TaskProvider = ({ children }) => {   //This is wrapping the app wit
       completed: false,
     };
     setTasks((prev) => [...prev, newTask]);   // Creates a new array and add new task to existing tasks
-  };  
+  };
+
+  const deleteTask = (id) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id)); // Removes task with matching ID
+  };
+
+  const updateTask = (id, updatedFields) => {
+    setTasks((prev) =>
+      prev.map((task) =>          // Maps through tasks and updates the one with matching ID
+        task.id === id ? { ...task, ...updatedFields } : task 
+      )
+    );
+  }
 
   const toggleTaskComplete = (id) => {
     setTasks((prev) =>
@@ -29,7 +41,7 @@ export const TaskProvider = ({ children }) => {   //This is wrapping the app wit
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, toggleTaskComplete }}>
+    <TaskContext.Provider value={{ tasks, addTask, deleteTask,updateTask,toggleTaskComplete }}>
       {children}
     </TaskContext.Provider>
   );
